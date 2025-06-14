@@ -4,21 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Password Strength Checker</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
         <h2> Password Strength Checker</h2>
-        <input type="password" id="password" placeholder="Enter your Password">
+        <input type="password" id="password" placeholder="Enter your Password" oninput="checkStrength()">
         <label for="">
-            <input type="checkbox"> Show Password
+            <input type="checkbox" onclick="toggleVisibility()"> Show Password
         </label>
         <div id="strengthMsg" class="strength"></div>
-        <ul>
+        <ul id="tips">
            <li>At least 8 Characters</li>
            <li>Include atleast one Uppercase and Lowercase</li> 
            <li>Must Contain Number</li> 
            <li>Contain Special Character (eg. !, @, #, $)</li> 
         </ul>
     </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
