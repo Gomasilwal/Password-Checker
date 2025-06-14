@@ -1,31 +1,61 @@
 function checkStrength() {
-    const pw  = document.getElementById("password").value;
+    const pwd  = document.getElementById("password").value;
     const msg  = document.getElementById("strengthMsg");
 
-    let strength = 0;
-    if(pwd.length >= 8) strength++;
-    if(/[a-z]/.test(pwd)) strength++;
-    if(/[A-Z]/.test(pwd)) strength++;
-    if(/[0-9]/.test(pwd)) strength++;
-    if(/[^A-Za-z0-9]/.test(pwd)) strength++;
+    //check individual criteria
+    const islength= pwd.length >= 8;
+    const hasLower = /[a-z]/.test(pwd);
+    const hasUpper = /[A-Z]/.test(pwd);
+    const hasNumber = /[0-9]/.test(pwd);
+    const hasSpecial = /[^A-Za-z0-9]/.test(pwd);
 
-//Reset Class
-    msg.className = "strength";
+    //update Visual Checklist
+    updateTip("lengthTip", islength);
+    updateTip("lowerTip", hasLower);
+    updateTip("upperTip", hasUpper);
+    updateTip("numberTip", hasNumber);
+    updateTip("specialTip", hasSpecial);
 
-    if (strength === 5){
-        msg.testContent = "Very Strong Password";
+       //count strength
+       let strength = 0;
+       if (islength) strength++; 
+       if (hasLower) strength++; 
+       if (hasUpper) strength++; 
+       if (hasNumber) strength++;
+       if (hasSpecial) strength++;
+
+        //RESET Class
+        msg.classList.remove("weak","moderate","strong","very-strong");
+
+//new Class based on strength
+    if (pwd.length === 0){
+        msg.textContent = "";
+    } if (strength === 5){
+        msg.textContent = " 💪 Very Strong Password";
         msg.classList.add("very-strong");
     } else if (strength >= 4){
-         msg.testContent = "Strong Password";
+         msg.textContent = "🟢Strong Password";
         msg.classList.add("strong");
     }else if (strength >= 3){
-         msg.testContent = "Moderate Password";
+         msg.textContent = "🟡 Moderate Password";
         msg.classList.add("moderate");
     }else {
-         msg.testContent = "Weak Password";
+         msg.textContent = "🔴 Weak Password";
         msg.classList.add("weak");
     }
-    
+}
+
+function updateTip(id, condition) {
+    const element = document.getElementById(id);
+    if(condition){
+        element.textContent = "✅" + element.textContent.slice(2);
+        element.classList.remove("invalid");
+        element.classList.add("invalid");
+    }else{
+        element.textContent = "❌" + element.textContent.slice(2);
+        element.classList.remove("invalid");
+        element.classList.add("invalid");
+    }
 }
 
 function toggleVisibility() {

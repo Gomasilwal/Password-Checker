@@ -80,3 +80,16 @@ body.dark .strength.very-strong{ background-color: #1f4d1f; }
 body.dark #tips {
     color: #aaa;
 }
+
+#tips li {
+    list-style: none;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+.valid {
+    color: green;
+}
+.invalid {
+    color: red;
+}
