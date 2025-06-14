@@ -1,16 +1,31 @@
+:root {
+    --bg: #f9f9f9;
+    --text: #000;
+    --box-bg: #fff;
+}
+
+body.dark {
+    --bg: #1e1e1e;
+    --text: #f0f0f0;
+    --box-bg: #2c2c2c;
+}
+
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    background: #f9f9f9;
+    font-family: Arial,  sans-serif;
+    background: var(--bg);
+    color: var(--text);
     padding: 40px;
+    transition: background 0.3s, color 0.3s;
 }
 
 .container{
     max-width: 400px;
     margin: auto;
-    background: white;
+    background: var(--box-bg);
     padding: 20px;
     border-radius: 12px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    transition: background 0.3s;
 }
 
 input[type="password"] {
@@ -18,6 +33,25 @@ input[type="password"] {
     padding: 10px;
     font-size: 16px;
     margin-bottom: 10px;
+}
+
+.controls {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+button {
+    padding: 8px 12px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.toggle-dark {
+    display: flex;
+    align-items: center;
+    gap: 5px;
 }
 
 .strength {
@@ -32,8 +66,17 @@ input[type="password"] {
 .strength.strong{ color: #1a7f00; background-color: #e6ffe6; }
 .strength.very-strong{ color: #006600; background-color: #ccffcc; }
 
+body.dark .strength.weak{ background-color: #5c1a1a; }
+body.dark .strength.moderate{ background-color: #5c3c00; }
+body.dark .strength.strong{ background-color: #264d26; }
+body.dark .strength.very-strong{ background-color: #1f4d1f; }
+
 #tips {
     font-size: 14px;
     color: #666;
     padding-left: 20px;
+}
+
+body.dark #tips {
+    color: #aaa;
 }

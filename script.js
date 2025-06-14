@@ -27,3 +27,24 @@ function checkStrength() {
     }
     
 }
+
+function toggleVisibility() {
+    const pwdField = document.getElementById("password");
+    pwdField.type = pwdField.type === "password" ? "text" : "password";
+}
+
+function toggleDarkMode() {
+    document.body.classList.toggle("dark");
+}
+
+function generatePassword() {
+    const charset ="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+{}[]";
+    let pwd = "";
+    for (let i = 0; i < 14; i++){
+        pwd += charset.charAt(Math.floor(Math.random() * charset.length));        
+    }
+
+    const pwdField = document.getElementById("password");
+    pwdField.value = pwd;
+    checkStrength();
+}

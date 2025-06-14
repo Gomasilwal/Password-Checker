@@ -9,11 +9,19 @@
 <body>
     <div class="container">
         <h2> Password Strength Checker</h2>
-        <input type="password" id="password" placeholder="Enter your Password" oninput="checkStrength()">
-        <label for="">
-            <input type="checkbox" onclick="toggleVisibility()"> Show Password
-        </label>
+        <input type="password" id="password" placeholder="Enter your Password" oninput="checkStrength()" />
+        <div class="controls">
+            <label for="">
+                <input type="checkbox" onclick="toggleVisibility()"> Show Password
+            </label>
+            <button onclick="generatePassword()"> Generate Strong Password </button>
+            <label class="toggle-dark">
+                <input type="checkbox" onclick="toggleDarkMode()"> Dark Mode
+            </label>
+        </div>
+
         <div id="strengthMsg" class="strength"></div>
+        
         <ul id="tips">
            <li>At least 8 Characters</li>
            <li>Include atleast one Uppercase and Lowercase</li> 
