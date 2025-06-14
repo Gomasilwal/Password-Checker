@@ -47,4 +47,8 @@ function generatePassword() {
     const pwdField = document.getElementById("password");
     pwdField.value = pwd;
     checkStrength();
+
+    document.addEventListener("DOMContentLoaded", () => {
+        document.getElementById("password").addEventListener("input",checkStrength);
+    });
 }
